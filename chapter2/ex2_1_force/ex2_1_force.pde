@@ -50,13 +50,13 @@ class Mover
     if(location.x > 0 && location.x < (width / 2)){
       // 左側の端からの距離
       dist = ( width/2 ) - location.x;
-      left = new PVector(dist * 0.001, 0);
+      left = new PVector(dist * 0.01, 0);
       applyForce(left);
     }else if(location.x >= (width/2) && location.x < width){
       // 右側の端からの距離
       dist = location.x - (width/2);
       /* println("ex2_1_force::method() " + dist); */
-      left = new PVector(-dist * 0.001, 0);
+      left = new PVector(-dist * 0.01, 0);
       applyForce(left);
     }
 
@@ -92,9 +92,10 @@ void draw(){
 
   // 風をシミュレート
   PVector wind = new PVector(0.01, 0);
-  // 重力をシミュレート
-  PVector gravity = new PVector(0, 0.1);
   for (int i = 0; i < movers.length; i++) {
+    float m = movers[i].mass;
+    // 質量に応じた重力をシミュレート
+    PVector gravity = new PVector(0, 0.1 * m);
     movers[i].applyForce(wind);
     movers[i].applyForce(gravity);
     movers[i].checkEdges();

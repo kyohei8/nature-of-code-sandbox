@@ -33,7 +33,7 @@ void draw(){
 
 PVector attract(Mover m){
   float G = 0.4;
-  float mass = 20;
+  float mass = 30;
 
   // ２つの物体の距離
   PVector mouseLoc = new PVector(mouseX, mouseY);

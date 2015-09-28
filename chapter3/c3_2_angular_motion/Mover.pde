@@ -14,7 +14,7 @@ class Mover
     location = new PVector(random(width), random(height));
     mass = random(10);
     velocity = new PVector(0, 0);
-    acceleration = new PVector(0, 0);
+    acceleration = new PVector(random(190), 0);
   }
 
   /**
@@ -32,9 +32,13 @@ class Mover
     // 力を加え
     velocity.add(acceleration);
     location.add(velocity);
+
     // 角度運動を加える
+    aAcceleration = acceleration.x / 10.0;
     aVelocity += aAcceleration;
+    aVelocity = constrain(aVelocity, -0.1, 0.1);
     angle += aVelocity;
+
     // 力(加速度)を元に戻す
     acceleration.mult(0);
   }
